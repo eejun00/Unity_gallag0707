@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver == false)
         {
-            lifeText.text = string.Format("Life : {0}", life);
+            lifeText.text = string.Format("Life : ");
             scoreText.text = string.Format("Score : {0}", (int)score);
         }
 

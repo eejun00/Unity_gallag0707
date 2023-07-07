@@ -7,6 +7,9 @@ public class PlayerControler : MonoBehaviour
     GameManager gameManager;
     public GameObject bulletPrefab = default;
     public GameObject playerDeathPrefab;
+    public GameObject playerLife1Prefab;
+    public GameObject playerLife2Prefab;
+    public GameObject playerLife3Prefab;
     private Rigidbody playerRigid = default;
     public float speed = default;
     public float attackTime = default;
@@ -50,9 +53,18 @@ public class PlayerControler : MonoBehaviour
         gameManager.life -= 1;
         if (gameManager.life <= 0)
         {
+            Destroy(playerLife1Prefab);
             GameObject death = Instantiate(playerDeathPrefab, transform.position, transform.rotation);
             gameObject.SetActive(false);
             Destroy(death, 2f);
+        }
+        else if(gameManager.life == 2)
+        {            
+            Destroy(playerLife3Prefab);
+        }
+        else if (gameManager.life == 1)
+        {
+            Destroy(playerLife2Prefab);
         }
     }
 }
