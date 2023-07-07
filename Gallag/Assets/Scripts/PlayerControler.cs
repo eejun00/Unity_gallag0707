@@ -4,15 +4,45 @@ using UnityEngine;
 
 public class PlayerControler : MonoBehaviour
 {
+    public GameObject bulletPrefab = default;
+    private Rigidbody playerRigid = default;
+    public float speed = default;
+    public float attackTime = default;
+    public float attackSpeed = 0.2f;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerRigid = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        attackTime += Time.deltaTime;
+
+        float xInput = Input.GetAxis("Horizontal");
+        float zInput = Input.GetAxis("Vertical");
+
+        float xSpeed = xInput * speed;
+        float zSpeed = zInput * speed;
+
+        Vector3 newVelocity = new Vector3(xSpeed, 0f, zSpeed);
+        playerRigid.velocity = newVelocity;
+
+        if (attackTime > attackSpeed)
+        {
+            if (Input.GetKey(KeyCode.Z))
+            {
+                attackTime = 0;
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            }
+        }
+
+    }
+
+    public void Die()
+    {
+        gameObject.SetActive(false);
     }
 }

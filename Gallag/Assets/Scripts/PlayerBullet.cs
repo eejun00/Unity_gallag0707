@@ -15,6 +15,8 @@ public class PlayerBullet : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         rigid.velocity = transform.forward * speed;
 
+        this.transform.Rotate(0f, 180f, 0f);
+
         Destroy(gameObject, 5f);
         //5초뒤 사라짐
     }
