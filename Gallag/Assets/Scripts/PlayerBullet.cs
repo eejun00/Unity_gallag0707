@@ -25,7 +25,6 @@ public class PlayerBullet : MonoBehaviour
     {
         if (other.tag == "Fighter") //적 기체에 닿았을 경우
         {
-            //적 기체 코드 추가 시 주석 해제
             FighterController fighterController = other.GetComponent<FighterController>();
             fighterController.Die();
 

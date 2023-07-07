@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class FighterController : MonoBehaviour
 {
+    private GameManager gameManager;
     public GameObject fighterBulletPrefab;
+    public GameObject fighterDeathPrefab;
     public float spawnRateMin = 0.5f;
     public float spawnRateMax = 3f;
 
@@ -15,6 +17,7 @@ public class FighterController : MonoBehaviour
     private Rigidbody fighterRigidbody;
     void Start()
     {
+        gameManager = GameObject.FindAnyObjectByType<GameManager>();
         fighterRigidbody = GetComponent<Rigidbody>();
         fighterRigidbody.velocity = transform.forward * speed;
 
@@ -45,6 +48,10 @@ public class FighterController : MonoBehaviour
     public void Die()
     {
         gameObject.SetActive(false);
+        GameObject death = Instantiate(fighterDeathPrefab, transform.position, transform.rotation);
+        Destroy(death, 2f);
+
+        gameManager.score += 200;
 
         //이 자리에 gamescore추가 삽입
     }

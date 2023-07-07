@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerControler : MonoBehaviour
 {
+    GameManager gameManager;
     public GameObject bulletPrefab = default;
+    public GameObject playerDeathPrefab;
     private Rigidbody playerRigid = default;
     public float speed = default;
     public float attackTime = default;
     public float attackSpeed = 0.2f;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.FindAnyObjectByType<GameManager>();
         playerRigid = GetComponent<Rigidbody>();
     }
 
@@ -43,6 +47,12 @@ public class PlayerControler : MonoBehaviour
 
     public void Die()
     {
-        gameObject.SetActive(false);
+        gameManager.life -= 1;
+        if (gameManager.life <= 0)
+        {
+            GameObject death = Instantiate(playerDeathPrefab, transform.position, transform.rotation);
+            gameObject.SetActive(false);
+            Destroy(death, 2f);
+        }
     }
 }

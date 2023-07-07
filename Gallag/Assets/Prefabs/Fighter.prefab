@@ -219,9 +219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterBulletPrefab: {fileID: 4861889802438942318, guid: 4dcd323cf1a38fc44be308cce2262bd3, type: 3}
+  fighterDeathPrefab: {fileID: 2583043177062179388, guid: fb147f90b22d91549a0c5772bf210240, type: 3}
   spawnRateMin: 0.5
   spawnRateMax: 3
-  speed: 8
+  speed: 20
 --- !u!1 &1132554407770321980
 GameObject:
   m_ObjectHideFlags: 0

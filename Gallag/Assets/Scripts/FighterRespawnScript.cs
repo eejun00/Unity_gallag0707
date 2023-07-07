@@ -29,7 +29,7 @@ public class FighterRespawnScript : MonoBehaviour
         {
             timeAfterSpawn = 0f;
 
-            GameObject fighter = Instantiate(fighterPrefab, transform.position, transform.rotation);
+            GameObject fighter = Instantiate(fighterPrefab, new Vector3(Random.Range(-10,10),1.2f,Random.Range(80,90)), transform.rotation);
 
             //bullet.transform.forward;
 
