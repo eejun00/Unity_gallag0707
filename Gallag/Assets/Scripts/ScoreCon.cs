@@ -23,7 +23,7 @@ public class ScoreCon : MonoBehaviour
             Destroy(overScore,1f);
             isFirecracker = false;
         }
-        else
+        else if(gameManager.score % 1000 != 0)
         {
             isFirecracker = true;
         }
